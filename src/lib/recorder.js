@@ -6,6 +6,7 @@ export default class {
     this.beforeRecording = options.beforeRecording
     this.pauseRecording  = options.pauseRecording
     this.afterRecording  = options.afterRecording
+    this.afterCancel  = options.afterCancel
     this.micFailed       = options.micFailed
     this.bitRate         = options.bitRate
     this.sampleRate      = options.sampleRate
@@ -62,6 +63,21 @@ export default class {
     this.isRecording = false
 
     this.afterRecording && this.afterRecording(record)
+  }
+
+  cancel () {
+    this.stream.getTracks().forEach((track) => track.stop())
+    this.input.disconnect()
+    this.processor.disconnect()
+    this.context.close()
+
+
+    this._duration = 0
+    this.duration  = 0
+
+    this.isPause     = false
+    this.isRecording = false
+    this.afterCancel && this.afterCancel()
   }
 
   pause () {

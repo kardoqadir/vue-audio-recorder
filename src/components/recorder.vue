@@ -1,11 +1,16 @@
 <style lang="scss">
+.show-button{
+  position: relative;
+}
   .ar {
-    // width: 420px;
+    width: 200px;
     font-family: 'Roboto', sans-serif;
     border-radius: 16px;
-    // background-color: #FAFAFA;
-    // box-shadow: 0 4px 18px 0 rgba(0,0,0,0.17);
-    position: relative;
+    background-color: #FAFAFA;
+    box-shadow: 0 4px 18px 0 rgba(0,0,0,0.17);
+    position: absolute;
+    top: -180px;
+    left: -80px;
     box-sizing: content-box;
 
     &-content {
@@ -45,21 +50,23 @@
     &-recorder {
       position: relative;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
+      margin-bottom: 20px;
 
       &__duration {
         color: #AEAEAE;
-        font-size: 32px;
-        font-weight: 500;
+        font-size: 15px;
+        // font-weight: 500;
         margin-top: 20px;
         margin-bottom: 16px;
       }
 
       &__stop {
-        position: absolute;
-        top: 10px;
-        right: -52px;
+        margin-left: 10px;
+        // position: absolute;
+        // top: 10px;
+        // right: -52px;
       }
 
       &__time-limit {
@@ -177,72 +184,86 @@
       right: 85px;
     }
   }
+  
 
   @import '../scss/icons';
 </style>
 
 <template>
-  <div class="ar">
-    <!-- <div class="ar__overlay" v-if="isUploading"></div>
-    <div class="ar-spinner" v-if="isUploading">
-      <div class="ar-spinner__dot"></div>
-      <div class="ar-spinner__dot"></div>
-      <div class="ar-spinner__dot"></div>
-    </div> -->
-
-    <div class="ar-content" :class="{'ar__blur': isUploading}">
-      <div class="ar-recorder__duration">{{recordedTime}}</div>
-      <div class="ar-recorder">
-        <icon-button
-          class="ar-icon ar-icon__lg"
-          :name="iconButtonType"
-          :class="{
-            'ar-icon--rec': isRecording,
-            'ar-icon--pulse': isRecording && volume > 0.02
-          }"
-          @click.native="toggleRecorder"/>
-        <icon-button
-          class="ar-icon ar-icon__sm ar-recorder__stop"
-          name="stop"
-          v-if="isRecording"
-          @click.native="stopRecorder"/>
-      </div>
-
-      <!-- <div class="ar-recorder__records-limit" v-if="attempts">Attempts: {{attemptsLeft}}/{{attempts}}</div> -->
-      <!-- <div class="ar-recorder__time-limit" v-if="time">Record duration is limited: {{time}}m</div> -->
-
-      <!-- <div class="ar-records">
-        <div
-          class="ar-records__record"
-          :class="{'ar-records__record--selected': record.id === selected.id}"
-          :key="record.id"
-          v-for="(record, idx) in recordList"
-          @click="choiceRecord(record)">
-            <div
-              class="ar__rm"
-              v-if="record.id === selected.id"
-              @click="removeRecord(idx)">&times;</div>
-            <div class="ar__text">Record {{idx + 1}}</div>
-            <div class="ar__text">{{record.duration}}</div>
-
-            <downloader
-              v-if="record.id === selected.id && showDownloadButton"
-              class="ar__downloader"
-              :record="record"
-              :filename="filename"/>
-
-            <uploader
-              v-if="record.id === selected.id && showUploadButton"
-              class="ar__uploader"
-              :record="record"
-              :filename="filename"
-              :headers="headers"
-              :upload-url="uploadUrl"/>
-        </div>
+  <div class="show-button">
+    <div class="ar" v-if="isShow">
+      <!-- <div class="ar__overlay" v-if="isUploading"></div>
+      <div class="ar-spinner" v-if="isUploading">
+        <div class="ar-spinner__dot"></div>
+        <div class="ar-spinner__dot"></div>
+        <div class="ar-spinner__dot"></div>
       </div> -->
+      <div class="ar-content" :class="{'ar__blur': isUploading}">
+        
+        <div class="ar-recorder__duration">{{recordedTime}}</div>
+        <div class="ar-recorder">
+          <icon-button
+            class="ar-icon ar-icon__lg"
+            :name="iconButtonType"
+            :class="{
+              'ar-icon--rec': isRecording,
+              'ar-icon--pulse': isRecording && volume > 0.02
+            }"
+            @click.native="toggleRecorder"/>
+          <icon-button
+            class="ar-icon ar-icon__sm ar-recorder__stop"
+            name="stop"
+            v-if="isRecording"
+            @click.native="stopRecorder"/>
+            <icon-button
+            class="ar-icon ar-icon__sm ar-recorder__stop"
+            name="close"
+            v-if="isRecording"
+            @click.native="cancelRecorder"/>
+        </div>
 
-      <!-- <audio-player :record="selected"/> -->
+        <!-- <div class="ar-recorder__records-limit" v-if="attempts">Attempts: {{attemptsLeft}}/{{attempts}}</div>
+        <div class="ar-recorder__time-limit" v-if="time">Record duration is limited: {{time}}m</div>
+        <div class="ar-records">
+          <div
+            class="ar-records__record"
+            :class="{'ar-records__record--selected': record.id === selected.id}"
+            :key="record.id"
+            v-for="(record, idx) in recordList"
+            @click="choiceRecord(record)">
+              <div
+                class="ar__rm"
+                v-if="record.id === selected.id"
+                @click="removeRecord(idx)">&times;</div>
+              <div class="ar__text">Record {{idx + 1}}</div>
+              <div class="ar__text">{{record.duration}}</div>
+
+              <downloader
+                v-if="record.id === selected.id && showDownloadButton"
+                class="ar__downloader"
+                :record="record"
+                :filename="filename"/>
+
+              <uploader
+                v-if="record.id === selected.id && showUploadButton"
+                class="ar__uploader"
+                :record="record"
+                :filename="filename"
+                :headers="headers"
+                :upload-url="uploadUrl"/>
+          </div>
+        </div>
+        <audio-player :record="selected"/> -->
+      </div>
     </div>
+    <!-- <button @click="isShow = !isShow">Toggle</button> -->
+      <div class="s">
+        <icon-button
+      class="ar-icon ar-icon__sm"
+      name="mic"
+      
+      @click.native="isShow = true"/>
+      </div>
   </div>
 </template>
 
@@ -271,6 +292,7 @@
       beforeRecording  : { type: Function },
       pauseRecording   : { type: Function },
       afterRecording   : { type: Function },
+      afterCancel   : { type: Function },
       failedUpload     : { type: Function },
       beforeUpload     : { type: Function },
       successfulUpload : { type: Function },
@@ -279,6 +301,7 @@
     data () {
       return {
         isUploading   : false,
+        isShow   : false,
         recorder      : this._initRecorder(),
         recordList    : [],
         selected      : {},
@@ -328,7 +351,15 @@
         }
 
         this.recorder.stop()
+        this.isShow = false
         this.recordList = this.recorder.recordList()
+      },
+      cancelRecorder(){
+        if (!this.isRecording) {
+          return
+        }
+        this.recorder.cancel()
+        this.isShow = false
       },
       removeRecord (idx) {
         this.recordList.splice(idx, 1)
@@ -346,6 +377,7 @@
         return new Recorder({
           beforeRecording : this.beforeRecording,
           afterRecording  : this.afterRecording,
+          afterCancel  : this.afterCancel,
           pauseRecording  : this.pauseRecording,
           micFailed       : this.micFailed,
           bitRate         : this.bitRate,

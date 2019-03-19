@@ -1,7 +1,7 @@
 .ar-icon {
-  fill: #747474;
+  fill: #0984ff;
   border-radius: 50%;
-  border: 1px solid #05CBCD;
+  border: 1px solid #0984ff;
   background-color: #FFFFFF;
   padding: 5px;
   cursor: pointer;
@@ -9,18 +9,23 @@
 
   &:hover {
     fill: #505050;
+    border-color:#505050
   }
-
   &--no-border {
     border: 0;
     border-radius: 0;
     padding: 0;
   }
 
-  &--rec {
+  &--rec,&__lg {
     fill: white;
     background-color: #FF6B64;
     border-color: transparent;
+    &:hover{
+      fill:#f5f5f5;
+      border-color: transparent;
+
+    }
   }
 
   &--pulse {

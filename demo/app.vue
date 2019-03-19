@@ -5,9 +5,19 @@
   }
 </style>
 
+<style lang="scss">
+
+#wrapper{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+</style>
+
 <template>
-  <div class="row">
-    <div class="toggle" @click="toggle">TOGGLE</div>
+  <div class="row" id="wrapper">
+    <!-- <div class="toggle" @click="toggle">TOGGLE</div> -->
 
     <audio-recorder v-if="showRecorder"
       upload-url="some url"
@@ -17,6 +27,7 @@
       :before-recording="callback"
       :pause-recording="callback"
       :after-recording="callback"
+      :after-cancel="cancel"
       :select-record="callback"
       :before-upload="callback"
       :successful-upload="callback"
@@ -42,6 +53,9 @@
     methods: {
       callback (msg) {
         console.log('Event: ', msg)
+      },
+      cancel () {
+        console.log('Canceled ')
       },
       toggle () {
         this.showRecorder = !this.showRecorder
