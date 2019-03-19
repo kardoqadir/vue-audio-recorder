@@ -218,7 +218,6 @@
             <icon-button
             class="ar-icon ar-icon__sm ar-recorder__stop"
             name="close"
-            v-if="isRecording"
             @click.native="cancelRecorder"/>
         </div>
 
@@ -356,6 +355,7 @@
       },
       cancelRecorder(){
         if (!this.isRecording) {
+          this.isShow = false
           return
         }
         this.recorder.cancel()
