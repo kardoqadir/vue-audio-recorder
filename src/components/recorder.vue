@@ -1,10 +1,10 @@
 <style lang="scss">
   .ar {
-    width: 420px;
+    // width: 420px;
     font-family: 'Roboto', sans-serif;
     border-radius: 16px;
-    background-color: #FAFAFA;
-    box-shadow: 0 4px 18px 0 rgba(0,0,0,0.17);
+    // background-color: #FAFAFA;
+    // box-shadow: 0 4px 18px 0 rgba(0,0,0,0.17);
     position: relative;
     box-sizing: content-box;
 
@@ -95,7 +95,7 @@
         border-radius: 50%;
         width: 30px;
         height: 30px;
-        background: #05CBCD;
+        background: rgb(10, 29, 29);
         animation-name: blink;
         animation-duration: 1.4s;
         animation-iteration-count: infinite;
@@ -183,12 +183,12 @@
 
 <template>
   <div class="ar">
-    <div class="ar__overlay" v-if="isUploading"></div>
+    <!-- <div class="ar__overlay" v-if="isUploading"></div>
     <div class="ar-spinner" v-if="isUploading">
       <div class="ar-spinner__dot"></div>
       <div class="ar-spinner__dot"></div>
       <div class="ar-spinner__dot"></div>
-    </div>
+    </div> -->
 
     <div class="ar-content" :class="{'ar__blur': isUploading}">
       <div class="ar-recorder">
@@ -206,11 +206,11 @@
           @click.native="stopRecorder"/>
       </div>
 
-      <div class="ar-recorder__records-limit" v-if="attempts">Attempts: {{attemptsLeft}}/{{attempts}}</div>
-      <div class="ar-recorder__duration">{{recordedTime}}</div>
-      <div class="ar-recorder__time-limit" v-if="time">Record duration is limited: {{time}}m</div>
+      <!-- <div class="ar-recorder__records-limit" v-if="attempts">Attempts: {{attemptsLeft}}/{{attempts}}</div> -->
+      <!-- <div class="ar-recorder__duration">{{recordedTime}}</div> -->
+      <!-- <div class="ar-recorder__time-limit" v-if="time">Record duration is limited: {{time}}m</div> -->
 
-      <div class="ar-records">
+      <!-- <div class="ar-records">
         <div
           class="ar-records__record"
           :class="{'ar-records__record--selected': record.id === selected.id}"
@@ -238,9 +238,9 @@
               :headers="headers"
               :upload-url="uploadUrl"/>
         </div>
-      </div>
+      </div> -->
 
-      <audio-player :record="selected"/>
+      <!-- <audio-player :record="selected"/> -->
     </div>
   </div>
 </template>
