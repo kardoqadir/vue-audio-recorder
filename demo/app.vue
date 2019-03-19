@@ -12,7 +12,7 @@
     <audio-recorder v-if="showRecorder"
       upload-url="some url"
       :attempts="3"
-      :time="2"
+      :time="1"
       :headers="headers"
       :before-recording="callback"
       :pause-recording="callback"

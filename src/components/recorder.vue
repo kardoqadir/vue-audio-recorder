@@ -191,6 +191,7 @@
     </div> -->
 
     <div class="ar-content" :class="{'ar__blur': isUploading}">
+      <div class="ar-recorder__duration">{{recordedTime}}</div>
       <div class="ar-recorder">
         <icon-button
           class="ar-icon ar-icon__lg"
@@ -203,11 +204,11 @@
         <icon-button
           class="ar-icon ar-icon__sm ar-recorder__stop"
           name="stop"
+          v-if="isRecording"
           @click.native="stopRecorder"/>
       </div>
 
       <!-- <div class="ar-recorder__records-limit" v-if="attempts">Attempts: {{attemptsLeft}}/{{attempts}}</div> -->
-      <!-- <div class="ar-recorder__duration">{{recordedTime}}</div> -->
       <!-- <div class="ar-recorder__time-limit" v-if="time">Record duration is limited: {{time}}m</div> -->
 
       <!-- <div class="ar-records">
