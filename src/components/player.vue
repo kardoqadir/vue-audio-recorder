@@ -12,9 +12,9 @@
     font-family: 'Roboto', sans-serif;
 
     & > .ar-player-bar {
-      border: 1px solid #E8E8E8;
-      border-radius: 24px;
-      margin: 0 0 0 5px;
+      // border: 1px solid #E8E8E8;
+      // border-radius: 24px;
+      // margin: 0 0 0 5px;
 
       & > .ar-player__progress {
         width: 125px;
@@ -30,7 +30,7 @@
     }
 
     &-actions {
-      width: 55%;
+      // width: 55%;
       display: flex;
       align-items: center;
       justify-content: space-around;
@@ -38,24 +38,28 @@
 
     &__progress {
       width: 160px;
-      margin: 0 8px;
+      // margin: 0 8px;
     }
 
     &__time {
       color: rgba(84,84,84,0.5);
-      font-size: 16px;
-      width: 41px;
+      font-size: 14px;
+      border-radius: 14px;
+      padding: 5px 10px;
+      background-color: #E8E8E8;
     }
 
     &__play {
       width: 45px;
       height: 45px;
-      background-color: #FFFFFF;
-      box-shadow: 0 2px 11px 11px rgba(0,0,0,0.07);
+      border-radius: 100%;
+      padding: 5px;
+      background-color: #E8E8E8;
+      // box-shadow: 0 2px 11px 11px rgba(0,0,0,0.07);
 
       &--active {
-        fill: white !important;
-        background-color: #05CBCD !important;
+        // fill: white !important;
+        // background-color: #05CBCD !important;
 
         &:hover {
           fill: #505050 !important;
@@ -69,24 +73,21 @@
 
 <template>
   <div class="ar-player">
-    <div class="ar-player-actions">
+    
+    <div class="ar-player-bar">
       <icon-button
         id="play"
-        class="ar-icon ar-icon__lg ar-player__play"
+        class=" ar-icon__sm ar-player__play"
         :name="playBtnIcon"
         :class="{'ar-player__play--active': isPlaying}"
         @click.native="playback"/>
-    </div>
-
-    <div class="ar-player-bar">
-      <div class="ar-player__time">{{playedTime}}</div>
       <line-control
         class="ar-player__progress"
         ref-id="progress"
         :percentage="progress"
         @change-linehead="_onUpdateProgress"/>
       <div class="ar-player__time">{{duration}}</div>
-      <volume-control @change-volume="_onChangeVolume"/>
+      <!-- <volume-control @change-volume="_onChangeVolume"/> -->
     </div>
 
     <audio :id="playerUniqId" :src="audioSource"></audio>

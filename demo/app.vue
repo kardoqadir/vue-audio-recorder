@@ -30,12 +30,12 @@
       :after-cancel="cancel"
       :select-record="callback"
       :before-upload="callback"
-      :loadingIcon="false"
+      :loadingIcon="true"
       :successful-upload="callback"
       :failed-upload="callback"
       :bit-rate="192"/>
 
-    <audio-player :src="mp3" v-if="!showRecorder"/>
+    <audio-player :src="mp3" />
   </div>
 </template>
 

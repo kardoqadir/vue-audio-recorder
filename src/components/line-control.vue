@@ -1,8 +1,8 @@
 <style lang="scss">
   .ar-line-control {
     position: relative;
-    height: 8px;
-    border-radius: 5px;
+    height: 3px;
+    // border-radius: 5px;
     background-color: #E6E6E6;
 
     &__head {
