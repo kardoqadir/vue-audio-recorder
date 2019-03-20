@@ -8,9 +8,7 @@
     border-radius: 16px;
     background-color: #FAFAFA;
     box-shadow: 0 4px 18px 0 rgba(0,0,0,0.17);
-    position: absolute;
-    top: -180px;
-    left: -80px;
+
     box-sizing: content-box;
 
     &-content {
@@ -191,7 +189,7 @@
 
 <template>
   <div class="show-button">
-    <div class="ar" v-if="isShow">
+    <div class="ar">
       <!-- <div class="ar__overlay" v-if="isUploading"></div>
       <div class="ar-spinner" v-if="isUploading">
         <div class="ar-spinner__dot"></div>
@@ -256,13 +254,13 @@
       </div>
     </div>
     <!-- <button @click="isShow = !isShow">Toggle</button> -->
-      <div class="s">
+      <!-- <div class="s">
         <icon-button
       class="ar-icon ar-icon__sm"
       name="mic"
       
       @click.native="isShow = true"/>
-      </div>
+      </div> -->
   </div>
 </template>
 
