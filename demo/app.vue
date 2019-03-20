@@ -30,6 +30,7 @@
       :after-cancel="cancel"
       :select-record="callback"
       :before-upload="callback"
+      :loadingIcon="false"
       :successful-upload="callback"
       :failed-upload="callback"
       :bit-rate="192"/>

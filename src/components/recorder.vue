@@ -190,13 +190,13 @@
 <template>
   <div class="show-button">
     <div class="ar">
-      <!-- <div class="ar__overlay" v-if="isUploading"></div>
-      <div class="ar-spinner" v-if="isUploading">
+      <div class="ar__overlay" v-if="loadingIcon"></div>
+      <div class="ar-spinner" v-if="loadingIcon">
         <div class="ar-spinner__dot"></div>
         <div class="ar-spinner__dot"></div>
         <div class="ar-spinner__dot"></div>
-      </div> -->
-      <div class="ar-content" :class="{'ar__blur': isUploading}">
+      </div>
+      <div class="ar-content" :class="{'ar__blur': loadingIcon}">
         
         <div class="ar-recorder__duration">{{recordedTime}}</div>
         <div class="ar-recorder">
@@ -284,6 +284,7 @@
 
       showDownloadButton : { type: Boolean, default: true },
       showUploadButton   : { type: Boolean, default: true },
+      loadingIcon   : { type: Boolean, default: true },
 
       micFailed        : { type: Function },
       beforeRecording  : { type: Function },

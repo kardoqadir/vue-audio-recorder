@@ -41,6 +41,7 @@ npm i vue-audio-recorder --save
 | upload-url            | String   | URL for uploading                                                        |
 | show-download-button  | Boolean  | If it is true show a download button. Default: true                      |
 | show-upload-button    | Boolean  | If it is true show an upload button. Default: true                       |
+| loadingIcon    | Boolean  | If it is true show an loading. Default: false                       |
 | before-upload         | Function | Callback fires before uploading                                          |
 | successful-upload     | Function | Callback fires after successful uploading                                |
 | failed-upload         | Function | Callback fires after failure uploading                                   |
