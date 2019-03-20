@@ -354,7 +354,8 @@
       cancelRecorder(){
         if (!this.isRecording) {
           this.isShow = false
-          return
+          this.afterCancel && this.afterCancel()
+          return false;
         }
         this.recorder.cancel()
         this.isShow = false
